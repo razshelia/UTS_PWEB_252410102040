@@ -369,11 +369,9 @@ class PageController extends Controller
             return redirect('/login')->with('error', 'Silakan masuk dulu.');
         }
 
-        // ⚠️ POIN UTS: Menangkap Request Parameter (URL)
         $username = $request->query('username', $user['username']);
         $peranUrl = $request->query('peran', $user['peran']);
 
-        // Validasi keamanan: jika URL dimanipulasi (username beda), kembalikan ke URL yang benar
         if ($username !== $user['username']) {
             return redirect()->route('home', [
                 'username' => $user['username'],
