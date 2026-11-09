@@ -6,21 +6,21 @@ Di Loreberry, setiap loker menyimpan satu surat rahasia dari **Orby**, maskot ca
 
 **Tema pengelolaan:** pengelolaan loker fakta (membuka, mencari, menyukai, dan menyimpan fakta).
 
-Dibuat oleh: **[Nama Lengkap]** - NIM **252410102040**
+Dibuat oleh: **Rachelia Mayfanda Putri** - NIM **252410102040**
 
 ## 📸 Tampilan
 
 | Login | Dashboard |
 |---|---|
-| ![Login](docs/screenshots/login.png) | ![Dashboard](docs/screenshots/dashboard.png) |
+| ![Login](https://github.com/user-attachments/assets/5398c159-3767-4e5c-9813-dc8d8e555386) | ![Dashboard](https://github.com/user-attachments/assets/f101733d-b6cd-433e-8588-f6263490a637) |
 
 | Lorong Loker (Pengelolaan) | Surat Rahasia (Pop-up) |
 |---|---|
-| ![Lorong Loker](docs/screenshots/loker.png) | ![Surat](docs/screenshots/surat.png) |
+| ![Lorong Loker](https://github.com/user-attachments/assets/4cbbd757-f189-4d12-bd3d-70c1170589e8) | ![Surat](https://github.com/user-attachments/assets/574654af-c51a-45f6-ad87-8b4c5afb5a1b) |
 
 | Profil | Tampilan Mobile |
 |---|---|
-| ![Profil](docs/screenshots/profil.png) | ![Mobile](docs/screenshots/mobile.png) |
+| ![Profil](https://github.com/user-attachments/assets/28110563-afd3-455e-94e8-f9643d5851ad) | ![Mobile](https://github.com/user-attachments/assets/7b735dcf-ca29-49a0-869b-c30c96163770) |
 
 ## ✨ Fitur Utama
 
@@ -31,7 +31,6 @@ Dibuat oleh: **[Nama Lengkap]** - NIM **252410102040**
 * **Profil:** kartu identitas dengan fitur *fake edit* (nama, fase, status, dan bio diubah lewat JavaScript tanpa server).
 * **Maskot Interaktif:** Orby miring mengikuti kursor, melompat saat diklik, dan ada Orby kecil yang mengikuti kursor dengan berbagai ekspresi.
 * **Kejutan:** kartu hadiah dan konfeti muncul setelah semua misi selesai.
-* **Desain Responsif dan SEO:** navbar bergaya *glassmorphism*, layout memakai Tailwind CSS dengan *hamburger menu* untuk layar kecil, struktur HTML semantik, serta meta tag untuk SEO.
 
 ## 🚀 Teknologi yang Digunakan
 
@@ -121,16 +120,15 @@ Berikut adalah langkah-langkah untuk menjalankan proyek ini di komputer lokal.
 
 Kamu bisa **mendaftar** lewat halaman `/daftar` (isi username, usia, peran, dan password), atau memakai akun bawaan yang ada di `app/Http/Controllers/AuthController.php`:
 
-| Username | Password | Peran | Usia |
+| Username | Password |
 |---|---|---|---|
-| `sasa` | `sasa123` | Pelajar | 16 |
-| `berry` | `berry123` | Mahasiswa | 21 |
-| `kakak` | `kakak123` | Pekerja | 27 |
+| `asa` | `asa123` |
+| `berry` | `berry123` | 
+| `kakak` | `kakak123` |
 
 Dari beranda, klik **Masuk** atau **Daftar**. Setelah login, klik pintu loker untuk membuka suratnya. Pesan di dalam surat berbeda untuk setiap peran dan kelompok usia.
 
 ## 📝 Catatan
 
-* Proyek ini **tidak memakai database**. Semua data berupa array statis di `PageController`, sedangkan akun yang didaftarkan disimpan sementara di *session*.
+* Semua data di projek ini berupa array statis di `PageController`, sedangkan akun yang didaftarkan disimpan sementara di *session*.
 * Fitur edit profil hanya mengubah tampilan di browser dan akan kembali seperti semula saat halaman dimuat ulang.
-* Font: Sweet Melody dan Papernotes. Ilustrasi dan aset gambar dibuat dengan bantuan AI generatif (Gemini).
