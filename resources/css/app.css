@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@font-face {
+    font-family: "Sweet Melody";
+    src: url("../assets/fonts/SweetMelody-Bold-Demo.otf") format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Papernotes";
+    src: url("../assets/fonts/Papernotes.otf") format("opentype");
+    font-display: swap;
+}
+
+@theme {
+    /* Sweet Melody hanya punya huruf kapital, jadi judul wajib uppercase */
+    --font-display: "Sweet Melody", cursive;
+    --font-body: "Papernotes", ui-sans-serif, system-ui, sans-serif;
+
+    --color-bubble: #ff8fc7;
+    --color-blush: #ffd9ea;
+    --color-cream: #fff6fa;
+    --color-berry: #b8326f;
+    --color-ink: #4a2a44;
+    --color-lavender: #cdb9ee;
+    --color-lavender-dark: #a98bd6;
+    --color-lavender-light: #ece3fb;
+
+    --animate-kelip: kelip 2.6s ease-in-out infinite;
+    --animate-goyang: goyang 0.6s ease-in-out;
+
+    @keyframes kelip {
+        0%, 100% { opacity: 1; scale: 1; }
+        50% { opacity: 0.65; scale: 0.85; }
+    }
+}
+
+@layer base {
+    html {
+        font-size: 19px;
+    }
+
+    body {
+        @apply font-body text-ink;
+        background-color: #ffd9e6;
+    }
+
+    :focus-visible {
+        outline: 3px solid var(--color-berry);
+        outline-offset: 3px;
+    }
+}
+
+@layer components {
+    /* Judul bergaya stiker: isi pink tua dengan garis tepi putih */
+    .judul-stiker {
+        color: var(--color-berry);
+        -webkit-text-stroke: 8px #fff;
+        paint-order: stroke fill;
+        letter-spacing: 0.03em;
+    }
+
+    .bg-polos {
+        background-color: #ffd9e6;
+    }
+
+    .bg-kotak {
+        background-color: #f8eefc;
+        background-image:
+            repeating-linear-gradient(0deg, rgb(205 185 238 / 0.32) 0 34px, transparent 34px 68px),
+            repeating-linear-gradient(90deg, rgb(205 185 238 / 0.32) 0 34px, transparent 34px 68px);
+    }
+
+    .bg-polkadot {
+        background-color: #fff3d6;
+        background-image: radial-gradient(#e6d9b6 2.5px, transparent 3px);
+        background-size: 28px 28px;
+    }
+
+    /* Kertas surat bergaris dengan margin merah muda di kiri */
+    .kertas-surat {
+        background-color: #fffdf6;
+        background-image:
+            linear-gradient(to right, transparent 3rem, #f4a6c8 3rem, #f4a6c8 calc(3rem + 2px), transparent calc(3rem + 2px)),
+            repeating-linear-gradient(to bottom, transparent 0 1.55rem, #e6d6f4 1.55rem calc(1.55rem + 1px));
+    }
+
+    /* Animasi maskot pakai properti translate/scale/rotate individual
+       supaya tidak bentrok dengan transform dari Tailwind */
+    .animate-lompat { animation: lompat 0.7s ease-out; }
+    .animate-pop { animation: pop 0.3s ease-out; }
+    .animate-napas { animation: napas 2.4s ease-in-out infinite; }
+
+    .partikel {
+        position: fixed;
+        z-index: 70;
+        pointer-events: none;
+        font-size: 1.3rem;
+        animation: partikel 0.9s ease-out forwards;
+    }
+}
+
+@keyframes lompat {
+    0% { translate: 0 0; scale: 1 1; }
+    20% { translate: 0 0; scale: 1.12 0.88; }
+    50% { translate: 0 -34px; scale: 0.94 1.08; }
+    80% { translate: 0 0; scale: 1.1 0.9; }
+    100% { translate: 0 0; scale: 1 1; }
+}
+
+@keyframes goyang {
+    0%, 100% { rotate: 0deg; }
+    20% { rotate: -12deg; }
+    40% { rotate: 10deg; }
+    60% { rotate: -8deg; }
+    80% { rotate: 5deg; }
+}
+
+@keyframes pop {
+    0% { scale: 0.6; opacity: 0; }
+    70% { scale: 1.08; opacity: 1; }
+    100% { scale: 1; opacity: 1; }
+}
+
+@keyframes napas {
+    0%, 100% { scale: 1; }
+    50% { scale: 1.05; }
+}
+
+@keyframes partikel {
+    from { transform: translate(0, 0) scale(0.6) rotate(0deg); opacity: 1; }
+    to { transform: translate(var(--tx), var(--ty)) scale(1.2) rotate(var(--rot)); opacity: 0; }
+}
+
+/* --dx dan --dy diisi JS dengan posisi loker, jadi surat seolah keluar dari loker */
+@keyframes surat-keluar {
+    from { opacity: 0; transform: translate(var(--dx, 0px), var(--dy, 0px)) scale(0.12) rotate(-14deg); }
+    60% { opacity: 1; }
+    to { opacity: 1; transform: none; }
+}
+
+@keyframes latar {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+dialog[data-surat][open] {
+    animation: surat-keluar 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.15) both;
+}
+
+dialog[data-surat]::backdrop {
+    background: rgb(74 42 68 / 0.5);
+    backdrop-filter: blur(2px);
+    animation: latar 0.3s ease-out;
+}
+
+/* Kejutan: kartu hadiah memantul muncul dari tengah layar */
+@keyframes kejutan-muncul {
+    from { opacity: 0; transform: scale(0.4) rotate(-8deg); }
+    to { opacity: 1; transform: none; }
+}
+
+dialog[data-kejutan][open] {
+    animation: kejutan-muncul 0.7s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+
+dialog[data-kejutan]::backdrop {
+    background: rgb(184 50 111 / 0.45);
+    backdrop-filter: blur(2px);
+    animation: latar 0.3s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation: none !important;
+        transition-duration: 0.01ms !important;
+    }
+}
