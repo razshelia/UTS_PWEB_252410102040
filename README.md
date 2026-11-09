@@ -121,7 +121,7 @@ Berikut adalah langkah-langkah untuk menjalankan proyek ini di komputer lokal.
 Kamu bisa **mendaftar** lewat halaman `/daftar` (isi username, usia, peran, dan password), atau memakai akun bawaan yang ada di `app/Http/Controllers/AuthController.php`:
 
 | Username | Password |
-|---|---|---|---|
+|---|---|
 | `asa` | `asa123` |
 | `berry` | `berry123` | 
 | `kakak` | `kakak123` |
