@@ -94,7 +94,6 @@ class AuthController extends Controller
                     'peran' => $akun['peran'],
                 ]);
 
-                // ⚠️ INI POIN UTS-NYA: Mengirim username & peran lewat Request Parameter (URL)
                 return redirect()->route('home', [
                     'username' => $akun['username'],
                     'peran' => $akun['peran'],
